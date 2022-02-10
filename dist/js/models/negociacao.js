@@ -11,4 +11,7 @@ export class Negociacao {
         const data = new Date(this._data.getTime());
         return data;
     }
+    static criaDe(data, quantidade, valor) {
+        return new Negociacao(new Date(data.replace('/-/g', ',')), parseInt(quantidade), parseFloat(valor));
+    }
 }
