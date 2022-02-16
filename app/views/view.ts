@@ -6,9 +6,14 @@ export abstract class View <T> {
 
     // Param? : Opcional
     constructor(seletor: string, escapar?: boolean){
-        this.element = document.querySelector(seletor)
+        const element = document.querySelector(seletor)
+        if(element){
+            this.element = element as HTMLElement
+        }else {
+            throw new Error(`Seletor ${seletor} indefinido no DOM`)
+        }
+
         this.escapar = escapar ? true : false
-        console.log('escapar:', this.escapar);
     }
 
     protected abstract template(model: T): string 

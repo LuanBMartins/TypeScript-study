@@ -4,11 +4,16 @@ import { NegociacaoController } from './controllers/negociacao-controller.js'
 const controller = new NegociacaoController()
 const form = document.querySelector('.form')
 
-form.addEventListener('submit', event => {
-    event.preventDefault()
+if(form){
+    form.addEventListener('submit', event => {
+        event.preventDefault()
+    
+        controller.adiciona()
+    })
+}else{
+    throw new Error('Erro na inicialização da Aplicação . Form:NULL')
+}
 
-    controller.adiciona()
-})
 
 
 
