@@ -1,3 +1,5 @@
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-execucao.js"
+
 export abstract class View <T> {
 
     // O valor protected determina que os herdeiros podem acessar o elemento, porém ele ainda permanecerá privado em View
@@ -18,7 +20,9 @@ export abstract class View <T> {
 
     protected abstract template(model: T): string 
 
+    @logarTempoDeExecucao()
     public update(model: T): void {
+
         let template = this.template(model)
 
         // Remove scripts maliciosos
