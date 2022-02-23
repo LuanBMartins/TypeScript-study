@@ -1,4 +1,4 @@
-export function logarTempoDeExecucao() {
+export function logarTempoDeExecucao(segundos:boolean = false) {
     return function(
         target: any,
         propertyKey: string,
@@ -9,7 +9,12 @@ export function logarTempoDeExecucao() {
             const t1 = performance.now()
             const retorno = metodoOriginal.apply(this, args)
             const t2 = performance.now()
-            console.log(`${propertyKey}, tempo de execução: ${(t2-t1)/1000} s.`);
+
+            if(segundos){
+                console.log(`${propertyKey}, tempo de execução: ${(t2-t1)/1000} segundos`);
+            }else{
+                console.log(`${propertyKey}, tempo de execução: ${(t2-t1)/1} milisegundos`);
+            }
             retorno
         }
         return descriptor
