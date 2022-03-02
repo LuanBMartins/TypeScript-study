@@ -1,7 +1,3 @@
-import { escape } from "../decorators/escape.js"
-import { inspect } from "../decorators/inspect.js"
-import { logarTempoDeExecucao } from "../decorators/logar-tempo-execucao.js"
-
 export abstract class View <T> {
 
     // O valor protected determina que os herdeiros podem acessar o elemento, porém ele ainda permanecerá privado em View
